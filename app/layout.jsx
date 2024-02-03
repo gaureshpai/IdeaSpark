@@ -1,5 +1,5 @@
 import '@styles/globals.css';
-
+import React from 'react';
 export const metadata = {
     title: "Promptopia",
     description: 'Discover & Share AI Prompts'
