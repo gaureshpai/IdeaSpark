@@ -7,12 +7,11 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
   const { data: session } = useSession();
-
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
-  useEffect(() => { const setUpProviders = 
-    async () => {
+  useEffect(() => { 
+    const setUpProviders = async () => {
       const response = await getProviders();
       setProviders(response);
     }
@@ -20,18 +19,17 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className='flex-between w-full mb-16 pt-3'>
+    <nav className="flex-between w-full mb-16 pt-3">
       <Link href='/' className='flex gap-2 flex-center'>
         <Image
-          src='/assets/images/logo.svg'
-          alt='logo'
+          src={'/assets/images/logo.svg'}
+          alt='Promtopia logo'
           width={30}
           height={30}
           className='object-contain'
         />
         <p className='logo_text'>Promptopia</p>
       </Link>
-
       {/* Desktop Navigation */}
       <div className='sm:flex hidden'>
         {session?.user ? (
@@ -78,7 +76,7 @@ const Nav = () => {
         {session?.user ? (
           <div className='flex'>
             <Image
-              src={session?.user.image}
+              src="/assests/imagges/logo.svg"
               width={37}
               height={37}
               className='rounded-full'
