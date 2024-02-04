@@ -35,7 +35,7 @@ useEffect(() => {
 
     setPosts(data);
   }
-
+  console.log(posts);
 fetchPosts();
 
 }, []);
