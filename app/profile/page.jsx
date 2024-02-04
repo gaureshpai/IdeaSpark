@@ -1,66 +1,67 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-import Form from "@components/Form";
+import Profile from "@components/Profile";
 
-const UpdatePrompt = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const promptId = searchParams.get("id");
+const MyProfile = () => {
+    const router = useRouter();
+    const { data: session } = useSession();
 
-  const [post, setPost] = useState({ prompt: "", tag: "", });
-  const [submitting, setIsSubmitting] = useState(false);
+    const [myPosts, setMyPosts] = useState([]);
 
-  useEffect(() => {
-    const getPromptDetails = async () => {
-      const response = await fetch(`/api/prompt/${promptId}`);
-      const data = await response.json();
+    useEffect(() => {
+        const fetchPosts = async () => {
+            if (session?.user?.id) {
+                try {
+                    const response = await fetch(`/api/users/${session.user.id}/posts`);
+                    const data = await response.json();
 
-      setPost({
-        prompt: data.prompt,
-        tag: data.tag,
-      });
+                    setMyPosts(data);
+                } catch (error) {
+                    console.error("Error fetching posts:", error);
+                }
+            }
+        };
+
+        fetchPosts();
+    }, [session?.user?.id]);
+
+    const handleEdit = (post) => {
+        router.push(`/update-prompt?id=${post._id}`);
     };
 
-    if (promptId) getPromptDetails();
-  }, [promptId]);
+    const handleDelete = async (post) => {
+        const hasConfirmed = confirm(
+            "Are you sure you want to delete this prompt?"
+        );
 
-  const updatePrompt = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+        if (hasConfirmed) {
+            try {
+                await fetch(`/api/prompt/${post._id.toString()}`, {
+                    method: "DELETE",
+                });
 
-    if (!promptId) return alert("Missing PromptId!");
+                const filteredPosts = myPosts.filter((p) => p._id !== post._id);
 
-    try {
-      const response = await fetch(`/api/prompt/${promptId}`, {
-        method: "PATCH",
-        body: JSON.stringify({
-          prompt: post.prompt,
-          tag: post.tag,
-        }),
-      });
+                setMyPosts(filteredPosts);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    };
 
-      if (response.ok) {
-        router.push("/");
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  return (
-    <Form
-      type='Edit'
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={updatePrompt}
-    />
-  );
+    return (
+        <Profile
+            name='My'
+            desc='Welcome to your personalized profile page. Share your exceptional prompts and inspire others with the power of your imagination'
+            data={myPosts}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+        />
+    );
 };
 
-export default UpdatePrompt;
+export default MyProfile;
