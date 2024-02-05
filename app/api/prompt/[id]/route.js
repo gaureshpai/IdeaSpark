@@ -38,14 +38,16 @@ export const PATCH = async ( request , {params} ) => {
         return new Response(JSON.stringify(existingPrompt), { status : 200})
     }
 }    
-    export const DELETE = async ( request , {params} ) => {
-    const { prompt , tag} = await request.json();
+export const DELETE = async ( request , {params} ) => {
+    // const { prompt , tag} = await request.json();
+    // console.log(params, request)
 
     try{
         await connectToDB();
+        console.log("started")
 
         await Prompt.findByIdAndRemove(params.id);
-
+        console.log("success")
         return new Response("Prompt deleted successfully", { status : 200})
 
     }catch(error){
