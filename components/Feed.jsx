@@ -34,8 +34,8 @@ useEffect(() => {
     const data = await response.json();
 
     setPosts(data);
+    console.log(posts);
   }
-  console.log(posts);
 fetchPosts();
 
 }, []);
