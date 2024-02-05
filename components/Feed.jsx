@@ -34,9 +34,7 @@ useEffect(() => {
     const data = await response.json();
 
     setPosts(data);
-    while(1){
       console.log(posts);
-    }
 
   }
 fetchPosts();
