@@ -31,6 +31,17 @@ const handleSearchChange = (e) =>{
   useEffect(async () => {
     try {
       const response = await fetch('/api/prompt');
+      const data = await response.json();
+      setPosts(data);
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  }, []);
+
+  useEffect(async () => {
+    try {
+      const response = await fetch('/api/prompt');
       const rawData = await response.json();
 
       // Filter or modify the data based on certain conditions
@@ -42,8 +53,6 @@ const handleSearchChange = (e) =>{
       console.error('Error fetching posts:', error);
     }
   }, []);
-
-
 
   return (
     <section className='feed'>
