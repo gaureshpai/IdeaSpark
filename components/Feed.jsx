@@ -31,13 +31,18 @@ const handleSearchChange = (e) =>{
   useEffect(async () => {
     try {
       const response = await fetch('/api/prompt');
-      const data = await response.json();
-      setPosts(data);
-      console.log(data);
+      const rawData = await response.json();
+
+      // Filter or modify the data based on certain conditions
+      const filteredData = rawData.filter((item) => item.published);
+
+      setPosts(filteredData);
+      console.log(filteredData);
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
   }, []);
+
 
 
   return (
