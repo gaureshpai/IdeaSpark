@@ -24,21 +24,21 @@ const Feed = () => {
   const [posts,setPosts] = useState([]);
 
 const handleSearchChange = (e) =>{
-  setSearchText(e.value)
+  setSearchText(e.target.value)
 
 }
 
-useEffect(() => {
-  const fetchPosts = async () => {
-    const response = await fetch('/api/prompt');
-    const data = await response.json();
+  useEffect(async () => {
+    try {
+      const response = await fetch('/api/prompt');
+      const data = await response.json();
+      setPosts(data);
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  }, []);
 
-    setPosts(data);
-    console.log(data);
-  }
-fetchPosts();
-
-}, [searchText]);
 
   return (
     <section className='feed'>
