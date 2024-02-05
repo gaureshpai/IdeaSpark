@@ -38,7 +38,7 @@ useEffect(() => {
   }
 fetchPosts();
 
-}, []);
+}, [searchText]);
 
   return (
     <section className='feed'>
