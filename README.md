@@ -17,8 +17,8 @@ Promptopia is your go-to open-source AI prompting tool, designed to ignite your 
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/your-username/promptopia.git
-    cd promptopia
+    git clone https://github.com/gaureshpai/promtopia.git
+    cd promtopia
     ```
 
 2. **Install Dependencies:**
