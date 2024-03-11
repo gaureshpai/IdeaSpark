@@ -1,3 +1,4 @@
+"use client"
 import Feed from "@components/Feed";
 import ChatGPTLink from "@components/ChatGPTLink";
 
