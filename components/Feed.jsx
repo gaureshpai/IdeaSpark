@@ -23,7 +23,6 @@ const PromptCardList = ({ data, handleTagClick }) => {
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
 
-  // Search states
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
@@ -40,7 +39,7 @@ const Feed = () => {
   }, []);
 
   const filterPrompts = (searchtext) => {
-    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
+    const regex = new RegExp(searchtext, "i");
     return allPosts.filter(
       (item) =>
         regex.test(item.creator.username) ||
@@ -53,7 +52,6 @@ const Feed = () => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
 
-    // debounce method
     setSearchTimeout(
       setTimeout(() => {
         const searchResult = filterPrompts(e.target.value);

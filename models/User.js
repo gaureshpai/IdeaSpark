@@ -19,7 +19,6 @@ const UserSchema = new Schema({
     }
 });
 
-// Define the User model using the schema
 const User = models.User || model("User", UserSchema);
 
 export default User;

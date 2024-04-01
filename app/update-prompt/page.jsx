@@ -69,7 +69,3 @@ export default function UpdatePrompt2(){
         </Suspense>
     )
 }
-
-
-
-// export default UpdatePrompt;
