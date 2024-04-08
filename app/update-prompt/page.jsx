@@ -2,13 +2,13 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
 import Form from "@components/Form";
+
 const UpdatePrompt = () => {
+
     const router = useRouter();
     const searchParams = useSearchParams();
     const promptId = searchParams.get("id");
-
     const [post, setPost] = useState({ prompt: "", tag: "", });
     const [submitting, setIsSubmitting] = useState(false);
 
@@ -44,9 +44,11 @@ const UpdatePrompt = () => {
             if (response.ok) {
                 router.push("/");
             }
-        } catch (error) {
+        } 
+        catch (error) {
             console.log(error);
-        } finally {
+        } 
+        finally {
             setIsSubmitting(false);
         }
     };

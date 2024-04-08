@@ -35,29 +35,33 @@ const Nav = () => {
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
+
             <Link href="/create-prompt" className="black_btn">
               Create Post
             </Link>
+
             <button type="button" onClick={signOut} className="outline_btn">
               Sign Out
             </button>
+
             <Link href="/profile">
               <Image
-                src={session?.user?.image}
-                width={37}
-                height={37}
-                className="rounded-full cursor-pointer"
-                alt="profile"
+                src= {session?.user?.image}
+                width= {37}
+                height= {37}
+                className= "rounded-full cursor-pointer"
+                alt= "profile"
               />
             </Link>
+
           </div>
         ) : (
           <>
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
-                  type="button"
-                  key={provider.name}
+                  type= "button"
+                  key= {provider.name}
                   onClick={() => {
                     signIn(provider.id);
                   }}
@@ -71,26 +75,30 @@ const Nav = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="sm:hidden flex relative">
+      <div className= "sm:hidden flex relative">
         {session?.user ? (
-          <div className="flex">
+          <div className= "flex">
+
             <Image
-              src={session?.user?.image}
-              width={37}
-              height={37}
-              className="rounded-full cursor-pointer"
-              alt="profile"
+              src= {session?.user?.image}
+              width= {37}
+              height= {37}
+              className= "rounded-full cursor-pointer"
+              alt= "profile"
               onClick={() => setToggleDropdown(!toggleDropdown)}
             />
+
             {toggleDropdown && (
               <div className="dropdown">
+
                 <Link
-                  href="/profile"
-                  className="dropdown_link"
-                  onClick={() => setToggleDropdown(false)}
+                  href= "/profile"
+                  className= "dropdown_link"
+                  onClick= {() => setToggleDropdown(false)}
                 >
                   My Profile
                 </Link>
+
                 <Link
                   href="/create-prompt"
                   className="dropdown_link"
@@ -98,6 +106,7 @@ const Nav = () => {
                 >
                   Create Prompt
                 </Link>
+
                 <button
                   type="button"
                   onClick={() => {
@@ -108,6 +117,7 @@ const Nav = () => {
                 >
                   Sign Out
                 </button>
+                
               </div>
             )}
           </div>
