@@ -118,12 +118,12 @@
 }
 
 .prompt_layout {
-  @apply space-y-8 py-8 sm:columns-2 sm:gap-6 xl:columns-4;
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-4;
 }
 
 /* Feed Component */
 .feed {
-  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-5;
+  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
 }
 
 /* Form Component */
