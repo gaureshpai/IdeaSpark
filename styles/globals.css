@@ -41,13 +41,10 @@
 }
 
 .gradient {
-  height: fit-content;
   z-index: 3;
   width: 100%;
   max-width: 640px;
-  background-image: radial-gradient(at 27% 37%,
-      hsla(215, 98%, 61%, 1) 0px,
-      transparent 0%),
+  background-image: radial-gradient(at 27% 37%,hsla(215, 98%, 61%, 1) 0px,transparent 0%),
     radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
     radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
     radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
@@ -108,15 +105,19 @@
 }
 
 .copy_btn {
-  @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199, 199, 199, 0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
+  @apply w-7 h-7 rounded-full bg-white/10  backdrop-blur flex items-center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: inset 10px -50px 94px 0 rgba(199, 199, 199, 0.2);
 }
 
 .glassmorphism {
-  @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199, 199, 199, 0.2)] backdrop-blur p-5;
+  @apply rounded-xl border border-gray-200 bg-white/20 backdrop-blur p-5;
+  box-shadow: inset 10px -50px 94px 0 rgba(199, 199, 199, 0.2);
 }
 
 .prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-4;
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
 }
 
 /* Feed Component */
