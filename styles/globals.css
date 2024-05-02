@@ -19,7 +19,7 @@
 }
 
 .main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  background: radial-gradient(circle, rgba(1, 0, 17, 0) 0, #fafafa 100%);
   position: absolute;
   content: "";
   z-index: 2;
@@ -150,6 +150,7 @@
 /* PromptCard Component */
 .prompt_card {
   @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  background-color: rgb(254, 253, 253);
 }
 
 .flex-center {
