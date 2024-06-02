@@ -1,0 +1,14 @@
+.credits {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.credits p {
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.credits strong {
+  color: #ff6347;
+}

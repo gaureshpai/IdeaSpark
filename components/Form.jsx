@@ -52,13 +52,13 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           </Link>
 
           <button
-            type = 'submit'
-            disabled = {submitting}
-            className ='px-5 py-1.5 text-sm 
-            bg-primary-orange rounded-full text-white'
+            type="submit"
+            disabled={submitting}
+            className={`px-5 py-1.5 text-sm rounded-full text-white ${submitting ? 'bg-gray-400' : 'bg-blue-500'}`}
           >
             {submitting ? `${type}ing...` : type}
           </button>
+
 
         </div>
         
