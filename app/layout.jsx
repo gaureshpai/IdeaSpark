@@ -4,7 +4,7 @@ import Provider from "@components/Provider";
 import Footer from "@components/Footer";
 
 export const metadata = {
-  title: "Promptopia",
+  title: "IdeaSpark",
   description: "Discover & Share AI Prompts",
   icons: {
     icon:
