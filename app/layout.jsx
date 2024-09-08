@@ -1,6 +1,8 @@
 import "@styles/globals.css";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
+import { ThemeProvider } from "@components/ThemeProvider";
+import ThemeSwitcher from "@components/ThemeSwitcher";
 
 export const metadata = {
   title: "IdeaSpark",
@@ -23,18 +25,20 @@ export const metadata = {
 const RootLayout = ({ children }) => (
   <html lang='en'>
     <body>
-      <Provider>
+      <ThemeProvider>
+        <Provider>
+          <div className='main'>
+            <div className='gradient' />
+          </div>
 
-        <div className='main'>
-          <div className='gradient' />
-        </div>
-
-        <main className='app'>
-          <Nav />
-          {children}
-        </main>
-        
-      </Provider>
+          <main className='app'>
+            <Nav />
+            {children}
+          </main>
+          
+        </Provider>
+        <ThemeSwitcher />
+      </ThemeProvider>
     </body>
   </html>
 );
