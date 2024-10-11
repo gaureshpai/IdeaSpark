@@ -1,6 +1,8 @@
 import "@styles/globals.css";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
+import { ThemeProvider } from "@components/ThemeProvider";
+import ThemeSwitcher from "@components/ThemeSwitcher";
 
 export const metadata = {
   title: "IdeaSpark",
@@ -23,6 +25,7 @@ export const metadata = {
 const RootLayout = ({ children }) => (
   <html lang='en'>
     <body>
+      <ThemeProvider>
       <Provider>
 
         <div className='main'>
@@ -35,6 +38,8 @@ const RootLayout = ({ children }) => (
         </main>
         
       </Provider>
+      <ThemeSwitcher/>
+      </ThemeProvider>    
     </body>
   </html>
 );
