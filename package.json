@@ -10,16 +10,16 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "mongoose": "^8.9.0",
-    "mongodb": "^6.11.0",
-    "next": "15.1.0",
+    "mongoose": "^8.9.2",
+    "mongodb": "^6.12.0",
+    "next": "15.1.2",
     "next-auth": "^4.24.11",
-    "react": "^18",
-    "react-dom": "^18"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8",
-    "tailwindcss": "^3.4.16"
+    "tailwindcss": "^3.4.17"
   }
 }
