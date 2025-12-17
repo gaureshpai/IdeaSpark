@@ -40,6 +40,17 @@
   filter: invert(1);
 }
 
+/* Dark mode overrides for main background */
+.dark .main:before {
+  background: radial-gradient(circle, rgba(1, 0, 17, 0) 0, #111827 100%); /* bg-gray-900 */
+}
+
+.dark .main:after {
+  filter: invert(0); /* Make grid white/light in dark mode */
+  opacity: 0.2;
+}
+
+
 .gradient {
   z-index: 3;
   width: 100%;
@@ -74,14 +85,17 @@
 
 .black_btn {
   @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+  @apply dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white;
 }
 
 .outline_btn {
   @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black;
 }
 
 .head_text {
   @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+  @apply dark:text-white;
 }
 
 .orange_gradient {
@@ -98,10 +112,12 @@
 
 .desc {
   @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
+  @apply dark:text-gray-300;
 }
 
 .search_input {
   @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+  @apply dark:bg-gray-800 dark:border-gray-700 dark:text-white;
 }
 
 .copy_btn {
@@ -114,6 +130,7 @@
 .glassmorphism {
   @apply rounded-xl border border-gray-200 bg-white/20 backdrop-blur p-5;
   box-shadow: inset 10px -50px 94px 0 rgba(199, 199, 199, 0.2);
+  @apply dark:bg-black/40 dark:border-gray-700;
 }
 
 .prompt_layout {
@@ -128,29 +145,38 @@
 /* Form Component */
 .form_textarea {
   @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply dark:bg-gray-800 dark:text-gray-200;
 }
 
 .form_input {
   @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply dark:bg-gray-800 dark:text-gray-200;
 }
 
 /* Nav Component */
 .logo_text {
   @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+  @apply dark:text-white;
 }
 
 .dropdown {
   @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+  @apply dark:bg-gray-800;
 }
 
 .dropdown_link {
   @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
+  @apply dark:text-gray-200 dark:hover:text-gray-400;
 }
 
 /* PromptCard Component */
 .prompt_card {
   @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
   background-color: rgb(254, 253, 253);
+}
+.dark .prompt_card {
+  background-color: rgba(30, 30, 30, 0.8);
+  @apply border-gray-700 text-white;
 }
 
 .flex-center {

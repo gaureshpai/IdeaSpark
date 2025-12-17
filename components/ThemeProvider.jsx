@@ -10,8 +10,12 @@ export const ThemeProvider = ({ children, initialTheme = 'light' }) => {
     const [theme, setTheme] = useState(initialTheme);
 
     useEffect(() => {
-        // Apply theme class to the body element
-        document.body.className = theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black';
+        const root = document.documentElement;
+        if (theme === 'dark') {
+            root.classList.add('dark');
+        } else {
+            root.classList.remove('dark');
+        }
     }, [theme]);
 
     const toggleTheme = () => {

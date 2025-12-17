@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Nav = () => {
   const { data: session } = useSession();
@@ -35,6 +36,7 @@ const Nav = () => {
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
+            <ThemeSwitcher />
 
             <Link href="/create-prompt" className="black_btn">
               Create Post
@@ -46,22 +48,23 @@ const Nav = () => {
 
             <Link href="/profile">
               <Image
-                src= {session?.user?.image}
-                width= {37}
-                height= {37}
-                className= "rounded-full cursor-pointer"
-                alt= "profile"
+                src={session?.user?.image}
+                width={37}
+                height={37}
+                className="rounded-full cursor-pointer"
+                alt="profile"
               />
             </Link>
 
           </div>
         ) : (
-          <>
+          <div className="flex gap-3 md:gap-5">
+            <ThemeSwitcher />
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
-                  type= "button"
-                  key= {provider.name}
+                  type="button"
+                  key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
                   }}
@@ -70,21 +73,24 @@ const Nav = () => {
                   Sign in
                 </button>
               ))}
-          </>
+          </div>
         )}
       </div>
 
       {/* Mobile Navigation */}
-      <div className= "sm:hidden flex relative">
+      <div className="sm:hidden flex relative gap-3 items-center">
+        <div className="flex">
+          <ThemeSwitcher />
+        </div>
         {session?.user ? (
-          <div className= "flex">
+          <div className="flex">
 
             <Image
-              src= {session?.user?.image}
-              width= {37}
-              height= {37}
-              className= "rounded-full cursor-pointer"
-              alt= "profile"
+              src={session?.user?.image}
+              width={37}
+              height={37}
+              className="rounded-full cursor-pointer"
+              alt="profile"
               onClick={() => setToggleDropdown(!toggleDropdown)}
             />
 
@@ -92,9 +98,9 @@ const Nav = () => {
               <div className="dropdown">
 
                 <Link
-                  href= "/profile"
-                  className= "dropdown_link"
-                  onClick= {() => setToggleDropdown(false)}
+                  href="/profile"
+                  className="dropdown_link"
+                  onClick={() => setToggleDropdown(false)}
                 >
                   My Profile
                 </Link>
@@ -117,12 +123,12 @@ const Nav = () => {
                 >
                   Sign Out
                 </button>
-                
+
               </div>
             )}
           </div>
         ) : (
-          <>
+          <div className="flex gap-3 items-center">
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
@@ -136,7 +142,7 @@ const Nav = () => {
                   Sign in
                 </button>
               ))}
-          </>
+          </div>
         )}
       </div>
     </nav>
